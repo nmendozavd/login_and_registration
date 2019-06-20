@@ -1,74 +1,54 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Log Reg</title>
-    <style media="screen">
-      label{
-        display: block;
-        width: 280px;
-        text-align: right;
-      }
-      fieldset, form{
-        display: inline-block;
-      }
-      li.error{
-        color: red
-      }
-    </style>
-  </head>
-  <body>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-      <ul class=flashes>
-        {% for category, message in messages %}
-        <li class="{{ category }}">{{ message }}</li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-    {% endwith %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Log Reg</title>
+  <style media="screen">
+    label {
+      display: block;
+      width: 280px;
+      text-align: right;
+    }
+    fieldset,
+    form {
+      display: inline-block;
+    }
+    li.error {
+      color: red
+    }
+  </style>
+</head>
+<body>
+  {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+    <ul class=flashes>
+      {% for category, message in messages %}
+      <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+          </ul>
+    {% endif %}
+  {% endwith %}
 
+  <form action="/register" method='POST'>
+    First Name: <input type="text" name="first_name">
+    Last Name: <input type="text" name="last_name">
+    E-mail: <input type="text" name="email">
+    Password: <input type="password" name="password">
+    Confirm Password: <input type="password" name="passwordconf">
+    <input type="submit" value="Submit">
+  </form>
+  <hr>
+  <form action="/login" method='POST'>
+    <fieldset>
+    <legend>Login</legend>
+    Email: <input type="text" name="email" id="">
+    Password: <input type="password" name="password" id="">
+    <input type="submit" name="Login" id="">
+    </fieldset>
+  </form>
 
-
-
-    <form action="/register" method="post">
-      <fieldset>
-        <legend>Register</legend>
-        <label>First Name:
-          <input type="text" name="first_name" value="">
-        </label>
-        <label>Last Name:
-          <input type="text" name="last_name" value="">
-        </label>
-        <label>Email:
-          <input type="text" name="email" value="">
-        </label>
-        <label>Password:
-          <input type="text" name="password" value="">
-        </label>
-        <label>Confirm Password:
-          <input type="text" name="passconf" value="">
-        </label>
-        <label>
-        <input type="submit" value="Register">
-        </label>
-      </fieldset>
-    </form>
-    <form action="/login" method="post">
-      <fieldset>
-        <legend>Login</legend>
-        </label>
-        <label>Email:
-          <input type="text" name="email" value="">
-        </label>
-        <label>Password:
-          <input type="text" name="password" value="">
-        </label>
-        <label>
-        <input type="submit" value="Login">
-        </label>
-      </fieldset>
-    </form>
-
-  </body>
+  
+</body>
 </html>
